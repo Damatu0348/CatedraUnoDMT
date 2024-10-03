@@ -9,6 +9,6 @@ namespace api.src.Data
 {
    public class ApplicationDBContext(DbContextOptions dBContextOptions) : DbContext(dBContextOptions)
     {
-        public DbSet<User> Users {get; set;} = null!;
+        public DbSet<User> Users {get; set;}
     }
 }

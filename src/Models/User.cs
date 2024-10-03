@@ -12,14 +12,14 @@ namespace api.src.Models
         [StringLength(12, MinimumLength = 9)]
         public string Rut { get; set; } = string.Empty;
         [StringLength(100, MinimumLength = 3)]
-        public string Nombre { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         [EmailAddress(ErrorMessage = "Correo electrónico inválido.")]
-        public string Correo { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         [RegularExpression(@"Masculino|Femenino|Otro|Prefiero no decirlo")]
-        public string Genero { get; set; } = string.Empty;
+        public string Gender { get; set; } = string.Empty;
          [DataType(DataType.Date)]
         [CustomValidation(typeof(User), "ValidateBirthDate")]
-        public string FechaNacimiento { get; set; } = string.Empty;
+        public string BirthDate { get; set; } = string.Empty;
 
         public static ValidationResult? ValidateBirthDate(DateTime birthDate, ValidationContext context)
         {

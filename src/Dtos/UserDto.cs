@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api.src.Models
+namespace api.src.Dtos
 {
-    public class User
+    public class UserDto
     {
-        public int Id { get; set; }
-        [StringLength(12, MinimumLength = 9)]
+        public int Id {get; set;}
+         [StringLength(12, MinimumLength = 9)]
         public string Rut { get; set; } = string.Empty;
         [StringLength(100, MinimumLength = 3)]
         public string Nombre { get; set; } = string.Empty;
@@ -18,6 +18,6 @@ namespace api.src.Models
         [RegularExpression(@"Masculino|Femenino|Otro|Prefiero no decirlo")]
         public string Genero { get; set; } = string.Empty;
          [DataType(DataType.Date)]
-        public string FechaNacimiento { get; set; } = string.Empty;        
+        public string FechaNacimiento { get; set; } = string.Empty;
     }
 }

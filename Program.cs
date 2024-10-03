@@ -1,4 +1,6 @@
 using api.src.Data;
+using api.src.Interface;
+using api.src.Repository;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 Env.Load();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 string connectionString = Environment.GetEnvironmentVariable("DATA_BASE_URL") ?? "Data Source=app.db";
 builder.Services.AddDbContext<ApplicationDBContext>(opt => opt.UseSqlite(connectionString));
@@ -30,4 +34,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 app.Run();

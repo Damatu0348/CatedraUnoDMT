@@ -22,14 +22,15 @@ namespace api.src.Data
                 {
                     var userFaker = new Faker<User>()
                         .RuleFor(u => u.Rut, f => GenerateUniqueRandomRut(existingRuts))
-                        .RuleFor(u => u.Name, f => f.Person.FullName)
-                        .RuleFor(u => u.Email, f => f.Person.Email)
-                        .RuleFor(u => u.Gender, f => genders[random.Next(0, genders.Length)])
-                        .RuleFor(u => u.BirthDate, f => "2024-10-01");
+                        .RuleFor(u => u.Nombre, f => f.Person.FullName)
+                        .RuleFor(u => u.Correo, f => f.Person.Email)
+                        .RuleFor(u => u.Genero, f => genders[random.Next(0, genders.Length)])
+                        .RuleFor(u => u.FechaNacimiento, f => "2024-08-01");
                     var users = userFaker.Generate(10);
                     context.Users.AddRange(users);
                     context.SaveChanges();
-                }               
+                }    
+                context.SaveChanges();           
             }
         }
 
